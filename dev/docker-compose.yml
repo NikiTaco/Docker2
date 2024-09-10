@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    build: ../web
+    ports:
+      - "5001:5000"
+    environment:
+      - ENV=dev
+    depends_on:
+      - db
+
+  db:
+    build: ../db
+    environment:
+      POSTGRES_USER: devuser
+      POSTGRES_PASSWORD: devpassword
+      POSTGRES_DB: devdb
+    ports:
+      - "5433:5432"
